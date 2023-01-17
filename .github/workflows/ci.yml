@@ -27,5 +27,6 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Public
-      run: pwd && ls
-      
+      run: |
+        dotnet publish -c Release -o bin/Release/net7.0/publish
+        cd bin/Release/net7.0/publish
