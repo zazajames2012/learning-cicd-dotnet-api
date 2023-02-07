@@ -30,3 +30,4 @@ jobs:
       run: |
         dotnet publish -c Release -o bin/Release/net7.0/publish
         cd bin/Release/net7.0/publish
+        ls
