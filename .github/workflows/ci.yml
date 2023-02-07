@@ -69,5 +69,4 @@ jobs:
     - name: Download a Build Artifact
       uses: actions/download-artifact@v3.0.2
       with:
-        name: learning-cicd-dotnet-api
         path: /home/runner/work/learning-cicd-dotnet-api/learning-cicd-dotnet-api/bin/Release/net7.0/publish/
