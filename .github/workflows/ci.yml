@@ -63,12 +63,12 @@ jobs:
       with:
         dotnet-version: 7.0.x
 
-    - name: Dotnet Public
+    - name: Public
       run: | 
         dotnet publish -c Release -o bin/Release/net7.0/publish
         pwd
 
-    #- name: Download a Build Artifact
-    #  uses: actions/download-artifact@v3.0.2
-    #  with:
-    #    path: 
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.2
+      with:
+        path: /home/runner/work/learning-cicd-dotnet-api/learning-cicd-dotnet-api/bin/Release/net7.0/publish/
