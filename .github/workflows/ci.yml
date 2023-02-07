@@ -47,24 +47,34 @@ jobs:
     needs: [build, test]
     runs-on: ubuntu-latest
 
+    # steps:
+    # - uses: actions/checkout@v3
+
+    # - name: Setup .NET
+    #   uses: actions/setup-dotnet@v3
+    #   with:
+    #     dotnet-version: 7.0.x
+
+    # - name: Public
+    #   run: dotnet publish -c Release -o bin/Release/net7.0/publish
+
+    # - name: Download a Build Artifact
+    #   uses: actions/download-artifact@v3.0.2
+    #   id: download
+    #   with:
+    #     path: /home/runner/work/learning-cicd-dotnet-api/learning-cicd-dotnet-api/bin/Release/net7.0/publish/
+
+    # - name: 'Echo download path'
+    #   run: echo ${{steps.download.outputs.download-path}}
+
     steps:
     - uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+    - run: mkdir -p path/to/artifact
+
+    - run: echo hello > path/to/artifact/world.txt
+
+    - uses: actions/upload-artifact@v3
       with:
-        dotnet-version: 7.0.x
-
-    - name: Public
-      run: | 
-        dotnet publish -c Release -o bin/Release/net7.0/publish
-        pwd
-
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v3.0.2
-      id: download
-      with:
-        path: /home/runner/work/learning-cicd-dotnet-api/learning-cicd-dotnet-api/bin/Release/net7.0/publish/
-
-    - name: 'Echo download path'
-      run: echo ${{steps.download.outputs.download-path}}
+        name: my-artifact
+        path: path/to/artifact/world.txt
