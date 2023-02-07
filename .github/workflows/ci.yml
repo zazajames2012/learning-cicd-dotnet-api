@@ -47,3 +47,28 @@ jobs:
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+  artifact:
+
+    needs: [build, test]
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Dotnet Public
+      run: | 
+        dotnet publish -c Release -o bin/Release/net7.0/publish
+        pwd
+
+    #- name: Download a Build Artifact
+    #  uses: actions/download-artifact@v3.0.2
+    #  with:
+    #    path: 
